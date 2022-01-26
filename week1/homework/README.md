@@ -71,6 +71,7 @@ ORDER BY NUM_TRIPS DESC
 
 ## Q6 Most expensive route
 What's the pickup-dropoff pair with the largest average price for a ride (calculated based on total_amount)? Enter two zone names separated by a slashFor example:"Jamaica Bay / Clinton East"If any of the zone names are unknown (missing), write "Unknown". For example, "Unknown / Clinton East".
+ANSWER: Alphabet City/Unknown
 
 ```
 SELECT z."LocationID" PULocation_ID, z."Zone" PUZone, z2."LocationID" DOLocation_ID, z2."Zone" DOZone, AVG(ytt.total_amount) AS AVG_AMOUNT
