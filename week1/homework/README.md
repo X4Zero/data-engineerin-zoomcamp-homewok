@@ -56,3 +56,27 @@ BETWEEN '2021-01-01 00:00:00'::timestamp AND '2021-01-31 23:59:59'
 GROUP BY tpep_pickup_datetime
 ORDER BY MAX_TIP DESC
 ```
+
+## Q5 Most popular destination
+What was the most popular destination for passengers picked up in central park on January 14? Enter the zone name (not id). If the zone name is unknown (missing), write "Unknown"
+ANSWER: Upper East Side North
+```
+SELECT z."LocationID", z."Zone",  count(*) NUM_TRIPS
+FROM  yellow_taxi_trips ytt
+INNER JOIN zones z ON z."LocationID" = ytt."PULocationID"
+WHERE ytt.tpep_pickup_datetime::timestamp::date = '2021-01-14'
+GROUP BY  z."LocationID", z."Zone"
+ORDER BY NUM_TRIPS DESC
+```
+
+## Q6 Most expensive route
+What's the pickup-dropoff pair with the largest average price for a ride (calculated based on total_amount)? Enter two zone names separated by a slashFor example:"Jamaica Bay / Clinton East"If any of the zone names are unknown (missing), write "Unknown". For example, "Unknown / Clinton East".
+
+```
+SELECT z."LocationID" PULocation_ID, z."Zone" PUZone, z2."LocationID" DOLocation_ID, z2."Zone" DOZone, AVG(ytt.total_amount) AS AVG_AMOUNT
+FROM yellow_taxi_trips ytt
+INNER JOIN zones z ON z."LocationID" = ytt."PULocationID"
+INNER JOIN zones z2 ON z2."LocationID" = ytt."DOLocationID"
+GROUP BY z."LocationID",z."Zone", z2."LocationID",z2."Zone"
+ORDER BY AVG_AMOUNT DESC
+```
