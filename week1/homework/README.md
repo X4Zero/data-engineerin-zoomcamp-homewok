@@ -58,7 +58,7 @@ ORDER BY MAX_TIP DESC
 ```
 
 ## Q5 Most popular destination
-What was the most popular destination for passengers picked up in central park on January 14? Enter the zone name (not id). If the zone name is unknown (missing), write "Unknown"
+What was the most popular destination for passengers picked up in central park on January 14? Enter the zone name (not id). If the zone name is unknown (missing), write "Unknown"  
 ANSWER: Upper East Side North
 ```
 SELECT z."LocationID", z."Zone",  count(*) NUM_TRIPS
@@ -70,7 +70,7 @@ ORDER BY NUM_TRIPS DESC
 ```
 
 ## Q6 Most expensive route
-What's the pickup-dropoff pair with the largest average price for a ride (calculated based on total_amount)? Enter two zone names separated by a slashFor example:"Jamaica Bay / Clinton East"If any of the zone names are unknown (missing), write "Unknown". For example, "Unknown / Clinton East".
+What's the pickup-dropoff pair with the largest average price for a ride (calculated based on total_amount)? Enter two zone names separated by a slashFor example:"Jamaica Bay / Clinton East"If any of the zone names are unknown (missing), write "Unknown". For example, "Unknown / Clinton East".  
 ANSWER: Alphabet City/Unknown
 
 ```
